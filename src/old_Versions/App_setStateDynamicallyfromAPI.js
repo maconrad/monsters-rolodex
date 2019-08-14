@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-import { CardList } from './components/card-list/card-list.component';
-
 import './App.css';
 
 {/* Lifecycle Methods and APIs */}
@@ -30,7 +27,13 @@ class App extends Component{
   render() {
     return (
       <div className="App">
-        <CardList monsters={ this.state.monsters } />
+       {/* map returns function iterated over every element in array */}
+       {/* Unique key -> react needs to know that element to update if value changes */}
+       {/* Unique id needed for this */}
+       {
+         this.state.monsters.map(monster => (
+          <h1 key={ monster.id }> { monster.name } </h1>))
+       }
       </div>
     );
   }

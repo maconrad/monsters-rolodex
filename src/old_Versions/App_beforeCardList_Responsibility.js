@@ -30,7 +30,15 @@ class App extends Component{
   render() {
     return (
       <div className="App">
-        <CardList monsters={ this.state.monsters } />
+        <CardList name="Mario">
+          {/* map returns function iterated over every element in array */}
+          {/* Unique key -> react needs to know that element to update if value changes */}
+          {/* Unique id needed for this */}
+          {
+            this.state.monsters.map(monster => (
+              <h1 key={ monster.id }> { monster.name } </h1>))
+          }
+        </CardList>
       </div>
     );
   }
