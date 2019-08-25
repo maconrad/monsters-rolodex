@@ -11,8 +11,8 @@ class App extends Component{
 
     {/* Array of objects with attribute name */}
     this.state = {
-      monsters: [
-      ]
+      monsters: [],
+      searchField: ''
     }
   }
 
@@ -28,9 +28,35 @@ class App extends Component{
   }
 
   render() {
+    /* input field */
+      /* password */
+      /* e.target = input field => then value = text field */
+    
+    /* filter out based on searchField */
+    /* need a copy of monsters and searchfield to work on */
+    const { monsters, searchField } = this.state;
+    /* Array of filtered monsters (remember filter method returns array) */
+    const filteredMonsters = monsters.filter(monster => 
+      monster.name.toLowerCase().includes(searchField.toLowerCase())
+    )
     return (
       <div className="App">
-        <CardList monsters={ this.state.monsters } />
+        <input 
+          type='search' 
+          placeholder='Search monster' 
+          /* onChange={ e => console.log( e.target.value ) } */
+          /* setState = asyn function call => often one character behind */
+          /* Single line js => {}, multiline {{}} */
+          /* () => Callback of async call that runs after setState has finished */
+          /* If we need something done when the state is set, do it in the callback */
+          onChange= { e => {
+            this.setState( { searchField: e.target.value }, () => 
+            console.log(this.state.searchField));
+            /* Use callback instead console.log(this.state); */
+          }}
+        /> 
+        <CardList monsters={ filteredMonsters } />
+        {/* <CardList monsters={ this.state.monsters } /> */}
       </div>
     );
   }
