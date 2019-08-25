@@ -52,7 +52,7 @@ class App extends Component{
           onChange= { e => {
             this.setState( { searchField: e.target.value }, () => 
             console.log(this.state.searchField));
-            /* Use callback instead console.log(this.state); */
+            /* Use callback method instead console.log(this.state); */
           }}
         /> 
         <CardList monsters={ filteredMonsters } />
